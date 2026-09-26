@@ -2,6 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
+import musaPhoto from "@/public/images/musa-jubril-hero-original.png";
 import { gsap } from "@/lib/gsap";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { portfolioData } from "@/data/portfolio";
@@ -221,7 +222,7 @@ export function Hero() {
             {/* Portrait Image Frame */}
             <div className="relative w-full aspect-[4/4.5] overflow-hidden border border-[#2A2A2E] bg-[#111112]">
               <Image
-                src="/images/musa-portrait-cropped.jpg"
+                src={musaPhoto}
                 alt="Musa Jubril - Full-Stack Software Developer"
                 fill
                 priority
