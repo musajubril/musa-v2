@@ -219,7 +219,7 @@ export function Hero() {
         <div ref={cardRef} className="lg:col-span-5 flex flex-col">
           <div className="border border-[#2A2A2E] bg-[#18181A] p-4 flex flex-col">
             {/* Portrait Image Frame */}
-            <div className="relative w-full aspect-[4/4.2] overflow-hidden border border-[#2A2A2E] bg-[#111112]">
+            <div className="relative w-full aspect-[4/4.5] overflow-hidden border border-[#2A2A2E] bg-[#111112]">
               <Image
                 src="/images/musa-portrait-cropped.jpg"
                 alt="Musa Jubril - Full-Stack Software Developer"
@@ -227,7 +227,7 @@ export function Hero() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 480px"
-                className="object-cover grayscale contrast-[1.08] hover:scale-[1.02] transition-transform duration-700"
+                className="object-cover object-[center_30%] grayscale contrast-[1.05] hover:scale-[1.02] transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#18181A] via-transparent to-transparent opacity-40 pointer-events-none" />
             </div>
