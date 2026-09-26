@@ -167,7 +167,7 @@ export function ProjectGallery() {
 
             <div className="pt-6 border-t border-[#2A2A2E]">
               <a
-                href="https://github.com"
+                href={portfolioData.personal.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-between px-4 py-3 bg-[#F5F4F0] text-[#111112] font-mono text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#DCDAD5] transition-colors"

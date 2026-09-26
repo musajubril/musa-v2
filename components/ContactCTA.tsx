@@ -56,7 +56,7 @@ export function ContactCTA() {
           </a>
 
           <a
-            href="https://linkedin.com"
+            href={portfolioData.personal.contact.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3.5 border border-[#2A2A2E] bg-transparent text-[#F5F4F0] font-mono text-xs tracking-[0.08em] uppercase hover:bg-[#18181A] hover:border-[#8E8D8A] transition-all"

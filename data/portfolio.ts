@@ -48,9 +48,9 @@ export const portfolioData = {
       endYear: "2024",
     },
     contact: {
-      email: "jubrilmusa@gmail.com",
-      github: "https://github.com",
-      linkedin: "https://linkedin.com",
+      email: "musa4jubril@gmail.com",
+      github: "https://github.com/musajubril",
+      linkedin: "https://www.linkedin.com/in/musa-jubril/",
       twitter: "https://twitter.com",
     },
   },

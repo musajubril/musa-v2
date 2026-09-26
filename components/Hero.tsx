@@ -259,7 +259,7 @@ export function Hero() {
               <div className="flex items-center justify-between pt-3 border-t border-[#2A2A2E] mt-2">
                 <div className="flex items-center gap-3">
                   <a
-                    href="https://github.com"
+                    href={portfolioData.personal.contact.github}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub Profile"
@@ -268,7 +268,7 @@ export function Hero() {
                     <GithubIcon className="w-3.5 h-3.5" />
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href={portfolioData.personal.contact.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn Profile"

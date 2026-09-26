@@ -44,7 +44,7 @@ export function Footer() {
             <div className="flex flex-col space-y-3">
               <span className="text-[#C8A97E] text-[10px]">Networks</span>
               <a
-                href="https://github.com"
+                href={portfolioData.personal.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#8E8D8A] hover:text-[#F5F4F0] transition-colors flex items-center gap-1"
@@ -53,7 +53,7 @@ export function Footer() {
                 <ArrowUpRight className="w-3 h-3" />
               </a>
               <a
-                href="https://linkedin.com"
+                href={portfolioData.personal.contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#8E8D8A] hover:text-[#F5F4F0] transition-colors flex items-center gap-1"
