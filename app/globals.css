@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-garamond), Georgia, serif;
+  --font-sans: var(--font-manrope), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+
+  --color-obsidian-950: #0e0e0f;
+  --color-obsidian-900: #111112;
+  --color-obsidian-850: #131314;
+  --color-obsidian-800: #18181A;
+  --color-obsidian-750: #1c1b1c;
+  --color-obsidian-700: #201f20;
+  --color-obsidian-650: #222225;
+  --color-obsidian-600: #2a2a2b;
+  --color-obsidian-500: #353436;
+
+  --color-hairline: #2A2A2E;
+  --color-hairline-bright: #454843;
+
+  --color-linen: #F5F4F0;
+  --color-linen-muted: #DCDAD5;
+  --color-ash: #8E8D8A;
+  --color-ochre: #C8A97E;
+  --color-ochre-dim: #594320;
+}
+
+:root {
+  --background: #111112;
+  --foreground: #F5F4F0;
+  --surface-1: #18181A;
+  --surface-2: #222225;
+  --hairline: #2A2A2E;
+  --ash: #8E8D8A;
+  --ochre: #C8A97E;
+}
+
+* {
+  border-radius: 0px !important;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #111112;
+  color: #F5F4F0;
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: #111112;
+  color: #F5F4F0;
+  font-family: var(--font-manrope), -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: #C8A97E;
+  color: #111112;
+}
+
+/* Ambient Subtle Grain / Canvas styling */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #111112;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2E;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8E8D8A;
+}
+
+/* Fluid responsive typography utilities */
+.fluid-display-xl {
+  font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem);
+  line-height: clamp(2.75rem, 6.2vw + 1rem, 4.75rem);
+  letter-spacing: -0.02em;
+}
+
+.fluid-display-lg {
+  font-size: clamp(2rem, 4.5vw + 0.8rem, 3.25rem);
+  line-height: clamp(2.35rem, 4.8vw + 0.8rem, 3.5rem);
+  letter-spacing: -0.015em;
+}
+
+.fluid-headline-lg {
+  font-size: clamp(1.6rem, 3vw + 0.6rem, 2.25rem);
+  line-height: clamp(2rem, 3.4vw + 0.6rem, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+.fluid-mantra {
+  font-size: clamp(2.5rem, 9vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
