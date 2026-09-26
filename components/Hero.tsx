@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import musaPhoto from "@/public/images/musa-jubril-hero-original.png";
+import musaPhoto from "@/public/images/musa-editorial-framed.jpg";
 import { gsap } from "@/lib/gsap";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { portfolioData } from "@/data/portfolio";
@@ -228,7 +228,7 @@ export function Hero() {
                 priority
                 fetchPriority="high"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 40vw, 480px"
-                className="object-cover object-[center_30%] grayscale contrast-[1.05] hover:scale-[1.02] transition-transform duration-700"
+                className="object-cover object-center contrast-[1.02] hover:scale-[1.02] transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#18181A] via-transparent to-transparent opacity-40 pointer-events-none" />
             </div>
