@@ -33,42 +33,63 @@ export function ProjectGallery() {
           };
 
           if (isDesktop) {
-            const totalScroll = track.scrollWidth - window.innerWidth + 120;
+            const getScrollDistance = () => {
+              if (!track) return 0;
+              // Ensure the last card is fully brought into the viewport with padding
+              return Math.max(0, track.scrollWidth - window.innerWidth + 180);
+            };
 
-            const horizontalTween = gsap.to(track, {
-              x: -totalScroll,
-              ease: "none",
+            const tl = gsap.timeline({
               scrollTrigger: {
                 trigger: section,
                 pin: true,
-                scrub: 1.1,
+                pinSpacing: true,
+                scrub: 1,
                 start: "top top",
-                end: () => `+=${totalScroll * 1.1}`,
+                // Generous vertical scroll distance plus buffer so user can read before unpinning
+                end: () => `+=${getScrollDistance() + 650}`,
+                anticipatePin: 1,
                 invalidateOnRefresh: true,
               },
             });
 
-            // Parallax effect on card images: move images slightly within their containers
+            // Translate the track horizontally across all cards
+            tl.to(track, {
+              x: () => -getScrollDistance(),
+              ease: "none",
+              duration: 1,
+            });
+
+            // Resting pause at the end of the scroll: keeps the final card visible before unpinning
+            tl.to({}, { duration: 0.25 });
+
+            // Parallax effect on card images
             const images = track.querySelectorAll(".card-image");
             images.forEach((img) => {
               gsap.fromTo(
                 img,
-                { xPercent: -6 },
+                { xPercent: -5 },
                 {
-                  xPercent: 6,
+                  xPercent: 5,
                   ease: "none",
                   scrollTrigger: {
                     trigger: section,
                     start: "top top",
-                    end: () => `+=${totalScroll * 1.1}`,
-                    scrub: 1.2,
+                    end: () => `+=${getScrollDistance() + 650}`,
+                    scrub: 1,
                   },
                 }
               );
             });
 
+            // Refresh ScrollTrigger once fonts and layout have calculated
+            const timer = setTimeout(() => {
+              ScrollTrigger.refresh();
+            }, 350);
+
             return () => {
-              horizontalTween.kill();
+              clearTimeout(timer);
+              tl.kill();
             };
           }
         }
@@ -82,11 +103,11 @@ export function ProjectGallery() {
     <section
       id="work"
       ref={sectionRef}
-      className="relative w-full bg-[#111112] overflow-hidden border-t border-[#2A2A2E] py-20 lg:py-0 lg:h-screen lg:flex lg:flex-col lg:justify-center"
+      className="relative w-full bg-[#111112] border-t border-[#2A2A2E] py-16 lg:py-10 min-h-screen flex flex-col justify-center overflow-hidden z-10"
     >
       {/* Section Header */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full mb-8 lg:mb-10">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#2A2A2E] pb-6">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 w-full mb-8 lg:mb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#2A2A2E] pb-5">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="w-1.5 h-1.5 bg-[#C8A97E]" />
@@ -126,8 +147,8 @@ export function ProjectGallery() {
             />
           ))}
 
-          {/* End of Gallery Card */}
-          <div className="w-[320px] md:w-[380px] flex-shrink-0 border border-[#2A2A2E] bg-[#18181A] p-8 flex flex-col justify-between">
+          {/* End of Gallery Archive Card */}
+          <div className="w-[320px] md:w-[380px] lg:h-[480px] flex-shrink-0 border border-[#2A2A2E] bg-[#18181A] p-8 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <Layers className="w-4 h-4 text-[#C8A97E]" />
@@ -136,7 +157,7 @@ export function ProjectGallery() {
                 </span>
               </div>
               <h3 className="font-serif text-2xl text-[#F5F4F0]">
-                More projects & engineering experiments
+                More projects &amp; engineering experiments
               </h3>
               <p className="font-sans text-xs text-[#DCDAD5] leading-relaxed">
                 Including Mithaq relationship questionnaire engine, Telegram n8n AI
@@ -162,7 +183,7 @@ export function ProjectGallery() {
       {/* Architecture Detail Modal (Print-like sharp overlay) */}
       {activeProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-[#111112]/90"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-[#111112]/90 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
         >
@@ -207,7 +228,7 @@ export function ProjectGallery() {
             {activeProject.features && (
               <div className="mb-6">
                 <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#8E8D8A] block mb-3">
-                  Delivered Features & Systems
+                  Delivered Features &amp; Systems
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {activeProject.features.map((feat, i) => (

@@ -72,15 +72,16 @@ export function Philosophy() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#111112] border-t border-[#2A2A2E] py-28 px-6 md:px-12 max-w-[1400px] mx-auto overflow-hidden"
+      className="relative w-full bg-[#111112] border-t border-[#2A2A2E] py-28 overflow-hidden z-20"
     >
-      {/* Eyebrow */}
-      <div className="flex items-center gap-2 mb-8">
-        <span className="w-1.5 h-1.5 bg-[#C8A97E]" />
-        <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#8E8D8A]">
-          CORE CREED // 003
-        </span>
-      </div>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
+        {/* Eyebrow */}
+        <div className="flex items-center gap-2 mb-8">
+          <span className="w-1.5 h-1.5 bg-[#C8A97E]" />
+          <span className="font-mono text-xs uppercase tracking-[0.14em] text-[#8E8D8A]">
+            CORE CREED // 003
+          </span>
+        </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Left Side: Scroll-Scrubbed Monumental Mantra */}
@@ -138,6 +139,7 @@ export function Philosophy() {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }
