@@ -285,13 +285,16 @@ export function Hero() {
                   </a>
                 </div>
 
-                <button
-                  onClick={() => scrollTo("#contact")}
+                <a
+                  href="/Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download="Musa-Jubril-Resume.pdf"
                   className="font-mono text-[10px] uppercase tracking-[0.1em] text-[#C8A97E] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <FileText className="w-3 h-3" />
-                  <span>Curriculum Vitae</span>
-                </button>
+                  <span>Download CV</span>
+                </a>
               </div>
             </div>
           </div>

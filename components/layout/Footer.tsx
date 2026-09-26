@@ -68,6 +68,16 @@ export function Footer() {
                 <span>Email</span>
                 <ArrowUpRight className="w-3 h-3" />
               </a>
+              <a
+                href="/Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download="Musa-Jubril-Resume.pdf"
+                className="text-[#8E8D8A] hover:text-[#C8A97E] transition-colors flex items-center gap-1"
+              >
+                <span>Download CV</span>
+                <ArrowUpRight className="w-3 h-3" />
+              </a>
             </div>
           </div>
         </div>
