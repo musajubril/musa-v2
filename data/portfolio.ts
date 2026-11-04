@@ -117,6 +117,66 @@ export const portfolioData = {
   ],
   projects: [
     {
+      id: "mongoose-tenant-shield",
+      name: "mongoose-tenant-shield",
+      type: "Open-Source Security Package",
+      tagline:
+        "Enterprise-grade Multi-Tenant Data Isolation for Single-Database SaaS Architectures",
+      category: "Open Source & Security",
+      status: "NPM v1.0.1",
+      featured: true,
+      version: "1.0.1",
+      author: "Musa Jubril",
+      year: "2026",
+      role: "Creator, Lead Architect & Maintainer",
+      description:
+        "A zero-boilerplate security library for Node.js that leverages AsyncLocalStorage and Mongoose hooks to guarantee invisible, bulletproof multi-tenant database isolation without manual query filtering.",
+      targetUsers:
+        "SaaS engineers, backend architects & enterprise Node.js teams",
+      metrics:
+        "Published on npm v1.0.1 // 37 Vitest Tests // < 0.05ms Overhead",
+      tech: [
+        "Node.js",
+        "TypeScript",
+        "Express",
+        "Mongoose",
+        "Next.js 14",
+        "Tailwind CSS",
+        "tsup",
+        "Vitest",
+      ],
+      features: [
+        "Automatic query scoping without manual query pollution",
+        "Aggregation pipeline hoisting ($match placed at index 0)",
+        "Active cross-tenant spoofing detection and auto-sanitization",
+        "Chainable .bypassShield() for super-admin system queries",
+        "Configurable strict mode with MissingTenantError",
+        "Live interactive documentation and serverless sandbox simulator on Vercel",
+      ],
+      badges: [
+        "NPM v1.0.1",
+        "AsyncLocalStorage",
+        "TypeScript Strict",
+        "MIT License",
+      ],
+      links: {
+        npm: "https://www.npmjs.com/package/mongoose-tenant-shield",
+        live: "https://mongoose-tenant-shield.vercel.app/",
+        githubPackage: "https://github.com/musajubril/mongoose-tenant-shield",
+        githubWebsite:
+          "https://github.com/musajubril/mongoose-tenant-shield-website",
+      },
+      stats: {
+        testCoverage: "37 / 37 automated tests passing",
+        typeSafety: "Thread-safe AsyncLocalStorage context",
+        bundleFormats: "Zero query latency overhead (< 0.05ms)",
+      },
+      image: "/images/mongoose-tenant-shield-showcase.jpg",
+      githubUrl: "https://github.com/musajubril/mongoose-tenant-shield",
+      liveUrl: "https://mongoose-tenant-shield.vercel.app/",
+      npmUrl: "https://www.npmjs.com/package/mongoose-tenant-shield",
+    },
+    {
       id: "express-mongoose-rest-builder",
       name: "express-mongoose-rest-builder",
       type: "NPM Package & Framework",
@@ -314,6 +374,11 @@ export const portfolioData = {
     },
   ],
   milestones: [
+    {
+      date: "11 // 2026",
+      title: "MONGOOSE-TENANT-SHIELD",
+      subtitle: "Published v1.0.1 on official NPM Registry",
+    },
     {
       date: "11 // 2026",
       title: "REST BUILDER ON NPM",
