@@ -2,18 +2,35 @@ export interface ProjectItem {
   id: string;
   name: string;
   type: string;
+  tagline?: string;
+  category?: string;
   status?: string;
   featured?: boolean;
+  version?: string;
+  author?: string;
   description: string;
   targetUsers?: string;
   tech: string[];
   features?: string[];
+  badges?: string[];
+  stats?: {
+    testCoverage?: string;
+    typeSafety?: string;
+    bundleFormats?: string;
+  };
+  links?: {
+    npm?: string;
+    live?: string;
+    githubPackage?: string;
+    githubWebsite?: string;
+  };
   image: string;
   year?: string;
   role?: string;
   metrics?: string;
   githubUrl?: string;
   liveUrl?: string;
+  npmUrl?: string;
 }
 
 export interface ExperienceItem {
@@ -99,6 +116,64 @@ export const portfolioData = {
     },
   ],
   projects: [
+    {
+      id: "express-mongoose-rest-builder",
+      name: "express-mongoose-rest-builder",
+      type: "NPM Package & Framework",
+      tagline: "Declarative REST API framework and query builder for Express & Mongoose",
+      category: "Open Source & Backend Framework",
+      status: "NPM v1.0.2",
+      featured: true,
+      version: "1.0.2",
+      author: "Musa Jubril",
+      year: "2026",
+      role: "Creator & Core Author",
+      description:
+        "An open-source, high-performance REST API framework and query builder for Express and Mongoose that generates fully-typed CRUD routers, bracket-notation filters, declarative population, and automated soft-delete.",
+      targetUsers: "Backend engineers, API architects & Node.js teams",
+      metrics: "Published on NPM v1.0.2 // 28 Vitest Tests // Zero 'any' Types",
+      tech: [
+        "Node.js",
+        "TypeScript",
+        "Express.js",
+        "MongoDB",
+        "Mongoose",
+        "Next.js 14",
+        "Tailwind CSS",
+        "tsup",
+        "Vitest",
+        "Vercel",
+      ],
+      features: [
+        "One-line RESTful router generator for any Mongoose schema",
+        "Bracket-notation query string translation to MongoDB operators ($gte, $in, $regex)",
+        "Custom declarative 'Fetch' JSON population syntax",
+        "Nested dot-notation field projection (e.g. seller.name)",
+        "Automatic soft-delete enforcement via immutable baseFilter",
+        "Interactive 3-in-1 Next.js API simulator & documentation portal on Vercel",
+      ],
+      badges: [
+        "NPM v1.0.2",
+        "TypeScript Strict",
+        "MIT License",
+        "Next.js 14",
+      ],
+      links: {
+        npm: "https://www.npmjs.com/package/express-mongoose-rest-builder",
+        live: "https://express-mongoose-rest-builder.vercel.app/",
+        githubPackage: "https://github.com/musajubril/express-mongoose-rest-builder",
+        githubWebsite: "https://github.com/musajubril/express-mongoose-rest-builder-website",
+      },
+      stats: {
+        testCoverage: "28 automated tests passing",
+        typeSafety: "100% strict generics (0 any types)",
+        bundleFormats: "Dual CJS & ESM hybrid",
+      },
+      image: "/images/express-rest-builder-showcase.jpg",
+      githubUrl: "https://github.com/musajubril/express-mongoose-rest-builder",
+      liveUrl: "https://express-mongoose-rest-builder.vercel.app/",
+      npmUrl: "https://www.npmjs.com/package/express-mongoose-rest-builder",
+    },
     {
       id: "easysch",
       name: "EASYSCH",
@@ -239,6 +314,11 @@ export const portfolioData = {
     },
   ],
   milestones: [
+    {
+      date: "11 // 2026",
+      title: "REST BUILDER ON NPM",
+      subtitle: "Published v1.0.2 on official NPM Registry",
+    },
     {
       date: "04 // 2024",
       title: "LASU GRADUATION",

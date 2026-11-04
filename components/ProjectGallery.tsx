@@ -191,12 +191,39 @@ export function ProjectGallery() {
             {/* Header */}
             <div className="flex items-start justify-between border-b border-[#2A2A2E] pb-4 mb-6">
               <div>
-                <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#C8A97E]">
-                  SYSTEM ARCHITECTURE SPECIFICATION
-                </span>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#C8A97E]">
+                    SYSTEM ARCHITECTURE SPECIFICATION
+                  </span>
+                  {activeProject.category && (
+                    <>
+                      <span className="h-2 w-[1px] bg-[#2A2A2E]" />
+                      <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8E8D8A]">
+                        {activeProject.category}
+                      </span>
+                    </>
+                  )}
+                </div>
                 <h3 className="font-serif text-2xl md:text-3xl text-[#F5F4F0] mt-1">
                   {activeProject.name}
                 </h3>
+                {activeProject.tagline && (
+                  <p className="font-sans text-xs text-[#8E8D8A] mt-1">
+                    {activeProject.tagline}
+                  </p>
+                )}
+                {activeProject.badges && (
+                  <div className="flex flex-wrap gap-1.5 mt-3">
+                    {activeProject.badges.map((badge) => (
+                      <span
+                        key={badge}
+                        className="font-mono text-[9px] uppercase tracking-[0.08em] px-2 py-0.5 border border-[#C8A97E]/40 bg-[#C8A97E]/10 text-[#C8A97E]"
+                      >
+                        {badge}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
               <button
                 onClick={() => setActiveProject(null)}
@@ -221,6 +248,42 @@ export function ProjectGallery() {
                 <span className="font-mono text-sm text-[#C8A97E]">
                   {activeProject.metrics}
                 </span>
+              </div>
+            )}
+
+            {/* Stats Breakdown if available */}
+            {activeProject.stats && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mb-6">
+                {activeProject.stats.testCoverage && (
+                  <div className="p-3 border border-[#2A2A2E] bg-[#111112]">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8E8D8A] block mb-1">
+                      Automated Tests
+                    </span>
+                    <span className="font-mono text-xs text-[#F5F4F0] font-medium">
+                      {activeProject.stats.testCoverage}
+                    </span>
+                  </div>
+                )}
+                {activeProject.stats.typeSafety && (
+                  <div className="p-3 border border-[#2A2A2E] bg-[#111112]">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8E8D8A] block mb-1">
+                      Type Safety
+                    </span>
+                    <span className="font-mono text-xs text-[#F5F4F0] font-medium">
+                      {activeProject.stats.typeSafety}
+                    </span>
+                  </div>
+                )}
+                {activeProject.stats.bundleFormats && (
+                  <div className="p-3 border border-[#2A2A2E] bg-[#111112]">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.1em] text-[#8E8D8A] block mb-1">
+                      Distribution
+                    </span>
+                    <span className="font-mono text-xs text-[#F5F4F0] font-medium">
+                      {activeProject.stats.bundleFormats}
+                    </span>
+                  </div>
+                )}
               </div>
             )}
 
@@ -261,11 +324,62 @@ export function ProjectGallery() {
               </div>
             </div>
 
-            {/* Footer */}
-            <div className="pt-4 border-t border-[#2A2A2E] flex justify-end">
+            {/* Footer with Links & Close */}
+            <div className="pt-5 border-t border-[#2A2A2E] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+              {activeProject.links ? (
+                <div className="flex flex-wrap items-center gap-2">
+                  {activeProject.links.npm && (
+                    <a
+                      href={activeProject.links.npm}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#C8A97E] bg-[#C8A97E]/10 text-[#C8A97E] hover:bg-[#C8A97E] hover:text-[#111112] font-mono text-xs uppercase tracking-[0.08em] font-medium transition-colors"
+                    >
+                      <span>Package on NPM</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {activeProject.links.live && (
+                    <a
+                      href={activeProject.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F5F4F0] text-[#111112] hover:bg-[#DCDAD5] font-mono text-xs uppercase tracking-[0.08em] font-medium transition-colors"
+                    >
+                      <span>Live Demo &amp; Docs</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {activeProject.links.githubPackage && (
+                    <a
+                      href={activeProject.links.githubPackage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#2A2A2E] bg-[#111112] text-[#DCDAD5] hover:border-[#8E8D8A] hover:text-[#F5F4F0] font-mono text-xs uppercase tracking-[0.08em] transition-colors"
+                    >
+                      <span>Core Repo</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                  {activeProject.links.githubWebsite && (
+                    <a
+                      href={activeProject.links.githubWebsite}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#2A2A2E] bg-[#111112] text-[#DCDAD5] hover:border-[#8E8D8A] hover:text-[#F5F4F0] font-mono text-xs uppercase tracking-[0.08em] transition-colors"
+                    >
+                      <span>Website Repo</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
+              ) : (
+                <div />
+              )}
+
               <button
                 onClick={() => setActiveProject(null)}
-                className="px-5 py-2 bg-[#F5F4F0] text-[#111112] font-mono text-xs uppercase tracking-[0.08em] font-medium hover:bg-[#DCDAD5] transition-colors"
+                className="px-5 py-2 border border-[#2A2A2E] bg-[#111112] text-[#8E8D8A] hover:text-[#F5F4F0] hover:border-[#8E8D8A] font-mono text-xs uppercase tracking-[0.08em] font-medium transition-colors"
               >
                 Close Specification
               </button>

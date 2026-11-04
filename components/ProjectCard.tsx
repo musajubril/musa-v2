@@ -49,16 +49,30 @@ export function ProjectCard({
           </div>
 
           {/* Title & Role */}
-          <h3 className="font-serif text-[#F5F4F0] text-2xl lg:text-3xl font-normal tracking-tight mb-2">
+          <h3 className="font-serif text-[#F5F4F0] text-2xl lg:text-3xl font-normal tracking-tight mb-1">
             {project.name}
           </h3>
 
-          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#8E8D8A] block mb-4">
+          <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#8E8D8A] block mb-3">
             {project.role} {project.year ? `• ${project.year}` : ""}
           </span>
 
+          {/* Badges strip if available */}
+          {project.badges && (
+            <div className="flex flex-wrap gap-1 mb-3">
+              {project.badges.map((badge) => (
+                <span
+                  key={badge}
+                  className="font-mono text-[8px] uppercase tracking-[0.06em] px-1.5 py-0.5 border border-[#C8A97E]/40 bg-[#C8A97E]/5 text-[#C8A97E]"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          )}
+
           {/* Description */}
-          <p className="font-sans text-[#DCDAD5] text-xs lg:text-sm leading-relaxed mb-4 line-clamp-4">
+          <p className="font-sans text-[#DCDAD5] text-xs lg:text-sm leading-relaxed mb-4 line-clamp-3">
             {project.description}
           </p>
 
@@ -90,13 +104,49 @@ export function ProjectCard({
             ))}
           </div>
 
-          <button
-            onClick={() => onSelect?.(project)}
-            className="w-full inline-flex items-center justify-between px-3 py-2 border border-[#2A2A2E] bg-[#111112] text-[#F5F4F0] hover:bg-[#F5F4F0] hover:text-[#111112] font-mono text-[10px] uppercase tracking-[0.08em] transition-colors cursor-pointer"
-          >
-            <span>Explore Architecture</span>
-            <ArrowUpRight className="w-3 h-3" />
-          </button>
+          {project.links ? (
+            <div className="flex items-center gap-1.5">
+              {project.links.npm && (
+                <a
+                  href={project.links.npm}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-2 border border-[#C8A97E]/50 bg-[#C8A97E]/10 text-[#C8A97E] hover:bg-[#C8A97E] hover:text-[#111112] font-mono text-[9px] uppercase tracking-[0.08em] font-medium transition-colors"
+                >
+                  <span>Package</span>
+                  <ArrowUpRight className="w-2.5 h-2.5" />
+                </a>
+              )}
+              {project.links.live && (
+                <a
+                  href={project.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-2 bg-[#F5F4F0] text-[#111112] hover:bg-[#DCDAD5] font-mono text-[9px] uppercase tracking-[0.08em] font-medium transition-colors"
+                >
+                  <span>Live Docs</span>
+                  <ArrowUpRight className="w-2.5 h-2.5" />
+                </a>
+              )}
+              <button
+                onClick={() => onSelect?.(project)}
+                className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-2 border border-[#2A2A2E] bg-[#111112] text-[#DCDAD5] hover:border-[#8E8D8A] hover:text-[#F5F4F0] font-mono text-[9px] uppercase tracking-[0.08em] transition-colors cursor-pointer"
+              >
+                <span>Architecture</span>
+                <ArrowUpRight className="w-2.5 h-2.5" />
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => onSelect?.(project)}
+              className="w-full inline-flex items-center justify-between px-3 py-2 border border-[#2A2A2E] bg-[#111112] text-[#F5F4F0] hover:bg-[#F5F4F0] hover:text-[#111112] font-mono text-[10px] uppercase tracking-[0.08em] transition-colors cursor-pointer"
+            >
+              <span>Explore Architecture</span>
+              <ArrowUpRight className="w-3 h-3" />
+            </button>
+          )}
         </div>
       </div>
 
