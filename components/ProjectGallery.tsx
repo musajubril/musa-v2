@@ -1,16 +1,43 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { useIsomorphicLayoutEffect } from "@/hooks/useIsomorphicLayoutEffect";
 import { portfolioData, ProjectItem } from "@/data/portfolio";
 import { ProjectCard } from "@/components/ProjectCard";
+import { useLenis } from "@/components/layout/SmoothScroll";
 import { X, CheckCircle2, ArrowUpRight, Layers } from "lucide-react";
 
 export function ProjectGallery() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [activeProject, setActiveProject] = useState<ProjectItem | null>(null);
+  const { lenis } = useLenis();
+
+  // Prevent background scrolling and stop Lenis when modal is open
+  useEffect(() => {
+    if (activeProject) {
+      lenis?.stop();
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+          setActiveProject(null);
+        }
+      };
+      window.addEventListener("keydown", handleKeyDown);
+
+      return () => {
+        lenis?.start();
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    } else {
+      lenis?.start();
+      document.body.style.overflow = "";
+    }
+  }, [activeProject, lenis]);
 
   useIsomorphicLayoutEffect(() => {
     const section = sectionRef.current;
@@ -183,11 +210,24 @@ export function ProjectGallery() {
       {/* Architecture Detail Modal (Print-like sharp overlay) */}
       {activeProject && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-[#111112]/90 backdrop-blur-sm"
+          data-lenis-prevent="true"
+          data-lenis-prevent-wheel="true"
+          data-lenis-prevent-touch="true"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-[#111112]/90 backdrop-blur-sm overscroll-contain select-auto"
           role="dialog"
           aria-modal="true"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setActiveProject(null);
+            }
+          }}
         >
-          <div className="relative w-full max-w-2xl bg-[#18181A] border border-[#2A2A2E] p-6 md:p-8 max-h-[90vh] overflow-y-auto">
+          <div
+            data-lenis-prevent="true"
+            data-lenis-prevent-wheel="true"
+            data-lenis-prevent-touch="true"
+            className="relative w-full max-w-2xl bg-[#18181A] border border-[#2A2A2E] p-6 md:p-8 max-h-[85vh] overflow-y-auto overscroll-contain touch-pan-y shadow-2xl"
+          >
             {/* Header */}
             <div className="flex items-start justify-between border-b border-[#2A2A2E] pb-4 mb-6">
               <div>
