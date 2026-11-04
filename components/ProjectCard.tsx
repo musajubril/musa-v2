@@ -126,7 +126,7 @@ export function ProjectCard({
                   onClick={(e) => e.stopPropagation()}
                   className="flex-1 inline-flex items-center justify-center gap-1 px-2 py-2 bg-[#F5F4F0] text-[#111112] hover:bg-[#DCDAD5] font-mono text-[9px] uppercase tracking-[0.08em] font-medium transition-colors"
                 >
-                  <span>Live Docs</span>
+                  <span>{project.links.npm ? "Live Docs" : "Live App"}</span>
                   <ArrowUpRight className="w-2.5 h-2.5" />
                 </a>
               )}

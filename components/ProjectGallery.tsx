@@ -386,7 +386,11 @@ export function ProjectGallery() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-2 bg-[#F5F4F0] text-[#111112] hover:bg-[#DCDAD5] font-mono text-xs uppercase tracking-[0.08em] font-medium transition-colors"
                     >
-                      <span>Live Demo &amp; Docs</span>
+                      <span>
+                        {activeProject.links.npm
+                          ? "Live Demo & Docs"
+                          : "Launch Platform"}
+                      </span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   )}
@@ -397,7 +401,9 @@ export function ProjectGallery() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-2 border border-[#2A2A2E] bg-[#111112] text-[#DCDAD5] hover:border-[#8E8D8A] hover:text-[#F5F4F0] font-mono text-xs uppercase tracking-[0.08em] transition-colors"
                     >
-                      <span>Core Repo</span>
+                      <span>
+                        {activeProject.links.npm ? "Core Repo" : "GitHub Repo"}
+                      </span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   )}
