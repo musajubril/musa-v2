@@ -369,7 +369,7 @@ export const portfolioData = {
       index: "02",
       company: "PUREJIM",
       role: "MERN Stack Developer",
-      period: "2021 — Present",
+      period: "2021 — Aug 2025",
       location: "Remote",
       description:
         "Executing core software architecture and feature delivery using React, Node.js, Express, and MongoDB. Streamlining authentication boundaries and client-server sync.",
