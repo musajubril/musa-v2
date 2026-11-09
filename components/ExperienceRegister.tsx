@@ -88,10 +88,35 @@ export function ExperienceRegister() {
 
               {/* Collapsible Details */}
               {isExpanded && (
-                <div className="px-4 md:px-14 pb-6 pt-2 border-t border-[#2A2A2E]/40 bg-[#141416]/50">
+                <div className="px-4 md:px-14 pb-8 pt-4 border-t border-[#2A2A2E]/40 bg-[#141416]/50">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-3 text-xs font-mono text-[#8E8D8A]">
+                    <span className="text-[#C8A97E]">{item.location}</span>
+                    <span>{"//"}</span>
+                    <span>{item.period}</span>
+                  </div>
+
                   <p className="font-sans text-xs md:text-sm text-[#DCDAD5] leading-relaxed max-w-3xl mb-4">
                     {item.description}
                   </p>
+
+                  {item.highlights && item.highlights.length > 0 && (
+                    <div className="mb-5 max-w-3xl">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#8E8D8A] block mb-2.5">
+                        Key Accomplishments & Systems
+                      </span>
+                      <ul className="space-y-2">
+                        {item.highlights.map((highlight, hIdx) => (
+                          <li
+                            key={hIdx}
+                            className="flex items-start gap-2.5 font-sans text-xs md:text-sm text-[#B5B3AD] leading-relaxed"
+                          >
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#C8A97E] mt-1.5 shrink-0" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
 
                   <div className="flex flex-wrap gap-1.5 pt-2">
                     {item.tags.map((tag) => (
@@ -129,46 +154,43 @@ export function ExperienceRegister() {
             </h4>
             <p className="font-sans text-xs text-[#8E8D8A] leading-relaxed">
               Integrated automated OCR and table extraction pipelines into production
-              workflows for enterprise data processing.
+              workflows for high-volume enterprise document processing.
             </p>
           </div>
 
           <div className="border border-[#2A2A2E] bg-[#18181A] p-5">
             <span className="font-mono text-[10px] text-[#C8A97E] uppercase block mb-1">
-              Angular & NgRx
+              Angular & UX
             </span>
             <h4 className="font-serif text-base text-[#F5F4F0] mb-2">
-              Editor Enhancements
+              ~35% Load Reduction
             </h4>
             <p className="font-sans text-xs text-[#8E8D8A] leading-relaxed">
-              Engineered rich-text Quill editor extensions and fine-grained change
-              detection optimizations for responsive authoring.
+              Architected modular UI components and optimized change detection strategies, cutting page load times by ~35%.
             </p>
           </div>
 
           <div className="border border-[#2A2A2E] bg-[#18181A] p-5">
             <span className="font-mono text-[10px] text-[#C8A97E] uppercase block mb-1">
-              PWA Architecture
+              Node & Express
             </span>
             <h4 className="font-serif text-base text-[#F5F4F0] mb-2">
-              Popup Notification UX
+              API Reliability & Speed
             </h4>
             <p className="font-sans text-xs text-[#8E8D8A] leading-relaxed">
-              Implemented smooth scrolling behavior and service worker sync for popup
-              notifications in offline-capable progressive web apps.
+              Built resilient RESTful API endpoints and background processing queues, boosting system throughput and response times.
             </p>
           </div>
 
           <div className="border border-[#2A2A2E] bg-[#18181A] p-5">
             <span className="font-mono text-[10px] text-[#C8A97E] uppercase block mb-1">
-              DevOps & Proxy
+              MongoDB Optimization
             </span>
             <h4 className="font-serif text-base text-[#F5F4F0] mb-2">
-              Tunneling & Proxying
+              Query & Schema Tuning
             </h4>
             <p className="font-sans text-xs text-[#8E8D8A] leading-relaxed">
-              Configured Angular development proxies, Ubuntu host environments, and
-              Ngrok secure tunneling for external API integrations.
+              Streamlined document indexing and aggregation pipelines to accelerate data retrieval across enterprise records.
             </p>
           </div>
         </div>

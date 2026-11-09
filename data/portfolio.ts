@@ -46,6 +46,17 @@ export interface ExperienceItem {
   tech: string[];
 }
 
+export interface ExperienceRegisterItem {
+  index: string;
+  company: string;
+  role: string;
+  period: string;
+  location: string;
+  description: string;
+  highlights?: string[];
+  tags: string[];
+}
+
 export const portfolioData = {
   personal: {
     name: "Musa Jubril",
@@ -358,12 +369,29 @@ export const portfolioData = {
     {
       index: "01",
       company: "CHB TECHNOLOGIES",
-      role: "MEAN Full Stack Software Developer",
+      role: "Full Stack Software Engineer",
       period: "2023 — Present",
-      location: "Remote",
+      location: "Switzerland · Remote",
       description:
-        "Architecting full-stack web applications, integrating AWS Textract document processing, optimizing Quill editor UX, and implementing Angular proxy configurations for enterprise workflows.",
-      tags: ["ANGULAR", "NODE.JS", "EXPRESS", "MONGODB", "AWS TEXTRACT"],
+        "Architecting enterprise cloud solutions and SaaS modules using the MEAN stack (MongoDB, Express.js, Angular, Node.js). Leading end-to-end delivery of intelligent document automation pipelines, optimizing high-throughput data layers, and engineering modular Angular UI architectures that reduced page load times by ~35%.",
+      highlights: [
+        "Developed full-stack web solutions using the MEAN stack, improving system modularity, maintainability, and code reusability across enterprise modules.",
+        "Architected scalable UI components in Angular and optimized frontend performance, reducing page load times by ~35%.",
+        "Engineered end-to-end intelligent document processing pipelines integrating AWS Textract OCR, asynchronous background queues, and automated multi-field table data extraction.",
+        "Implemented modular backend microservices and RESTful APIs with Express.js and Node.js, improving endpoint throughput, response times, and API reliability.",
+        "Optimized MongoDB schema designs and aggregation pipelines, accelerating query execution and data retrieval speeds for large-scale enterprise records.",
+        "Designed configurable business workflow systems, including automated document validator engines with dynamic due-date delay logic and custom rich-text Quill editor extensions.",
+        "Collaborated closely with cross-functional product, UX, and engineering teams to deploy feature-rich, customer-facing business solutions.",
+      ],
+      tags: [
+        "ANGULAR",
+        "NODE.JS",
+        "EXPRESS",
+        "MONGODB",
+        "TYPESCRIPT",
+        "AWS TEXTRACT",
+        "REST APIS",
+      ],
     },
     {
       index: "02",
@@ -373,6 +401,11 @@ export const portfolioData = {
       location: "Remote",
       description:
         "Executing core software architecture and feature delivery using React, Node.js, Express, and MongoDB. Streamlining authentication boundaries and client-server sync.",
+      highlights: [
+        "Engineered modular frontend interfaces using React, Redux, and modern CSS systems.",
+        "Implemented RESTful backend services with Express.js and Node.js with secure JWT authentication boundaries.",
+        "Designed MongoDB schemas to ensure robust data synchronization between client and server layers.",
+      ],
       tags: ["REACT", "NODE.JS", "MONGODB", "EXPRESS", "REDUX"],
     },
     {
@@ -383,6 +416,11 @@ export const portfolioData = {
       location: "Lagos, NG",
       description:
         "Conceived and deployed an end-to-end multi-tenant school operating system. Managed database models for broadsheets, attendance, automated report cards, and bursar payment tracking.",
+      highlights: [
+        "Architected and deployed an end-to-end multi-tenant school operating system supporting real administrative workflows.",
+        "Modeled database schemas for automated broadsheets, attendance, report cards, and bursar payment tracking.",
+        "Built responsive interfaces with Next.js and Tailwind CSS for cross-device operational accessibility.",
+      ],
       tags: ["NEXT.JS", "TAILWIND CSS", "MONGODB", "EXPRESS"],
     },
     {
@@ -393,6 +431,10 @@ export const portfolioData = {
       location: "Remote / Contract",
       description:
         "Delivered responsive, pixel-perfect user interfaces, modular design components, and RESTful API integrations across consumer web properties.",
+      highlights: [
+        "Delivered responsive, pixel-perfect user interfaces and modular component libraries across consumer web properties.",
+        "Integrated third-party RESTful APIs and ensured high performance across mobile and desktop viewports.",
+      ],
       tags: ["REACT", "TYPESCRIPT", "TAILWIND", "REST API"],
     },
     {
@@ -403,9 +445,13 @@ export const portfolioData = {
       location: "Lagos, NG",
       description:
         "Built web application foundations, mastered core JavaScript and full-stack development, and collaborated on client software deliverables.",
+      highlights: [
+        "Developed web application foundations and collaborated on full-stack JavaScript deliverables.",
+        "Contributed to bug fixes, code refactoring, and feature enhancements across client deliverables.",
+      ],
       tags: ["JAVASCRIPT", "HTML5", "CSS3", "NODE.JS"],
     },
-  ],
+  ] as ExperienceRegisterItem[],
   milestones: [
     {
       date: "11 // 2026",
