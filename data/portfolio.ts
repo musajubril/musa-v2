@@ -492,11 +492,6 @@ export const portfolioData = {
       subtitle: "Enterprise automated document parsing",
     },
     {
-      date: "06 // 2022",
-      title: "STEM & ROBOTICS INSTRUCTION",
-      subtitle: "Mentoring next-gen developers",
-    },
-    {
       date: "08 // 2019",
       title: "FIRST PRODUCTION ROLE",
       subtitle: "Professional engineering career launch",

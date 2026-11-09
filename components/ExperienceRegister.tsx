@@ -205,7 +205,7 @@ export function ExperienceRegister() {
           </span>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {portfolioData.milestones.map((m, idx) => (
             <div
               key={idx}
